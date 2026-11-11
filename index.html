@@ -1,0 +1,803 @@
+<!doctype html>
+<html lang="es-AR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inferno Combat Gym | Kickboxing, Boxeo, K1 y Muay Thai en Guaymallén</title>
+  <meta name="description"
+    content="Gimnasio de deportes de combate en Guaymallén, Mendoza. Clases de Kickboxing, Boxeo, K1 y Muay Thai para niños, jóvenes y adultos.">
+  <meta property="og:title" content="Inferno Combat Gym">
+  <meta property="og:description" content="Kickboxing, Boxeo, K1 y Muay Thai en Guaymallén, Mendoza.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+  <meta name="theme-color" content="#140b08">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="shortcut icon" href="images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --fondo: #140b08;
+      --panel: #1f120d;
+      --linea: #4a2a14;
+      --texto: #f4efe9;
+      --suave: #c9b8a8;
+      --rojo: #d62824;
+      --naranja: #ea5b0c;
+      --oro: #fdc40f;
+      --turquesa: #1fbfa8;
+      --hueso: #f4efe9;
+      --titulos: "Anton", "Impact", "Arial Narrow", sans-serif;
+      --cuerpo: "Barlow", "Segoe UI", system-ui, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      html {
+        scroll-behavior: auto
+      }
+    }
+
+    body {
+      margin: 0;
+      background: var(--fondo);
+      color: var(--texto);
+      font: 400 1.0625rem/1.55 var(--cuerpo)
+    }
+
+    a {
+      color: inherit
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--oro);
+      outline-offset: 3px
+    }
+
+    .wrap {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 20px
+    }
+
+    section {
+      padding: 64px 0;
+      border-top: 1px solid var(--linea)
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--titulos);
+      font-weight: 400;
+      line-height: 1.05;
+      margin: 0
+    }
+
+    h2 {
+      font-size: clamp(2rem, 6vw, 3rem);
+      color: var(--oro);
+      margin-bottom: 8px
+    }
+
+    .bajada {
+      color: var(--suave);
+      max-width: 60ch;
+      margin: 0 0 28px
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 2px solid transparent
+    }
+
+    .btn-wa {
+      background: var(--rojo);
+      color: #fff
+    }
+
+    .btn-wa:hover {
+      background: #b81f1b
+    }
+
+    .btn-borde {
+      border-color: var(--oro);
+      color: var(--oro)
+    }
+
+    .btn-borde:hover {
+      background: var(--oro);
+      color: var(--fondo)
+    }
+
+    /* cabecera */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      background: rgba(20, 11, 8, .94);
+      border-bottom: 1px solid var(--linea)
+    }
+
+    header .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 60px
+    }
+
+    .marca {
+      font-family: var(--titulos);
+      font-size: 1.4rem;
+      text-decoration: none;
+      color: var(--oro)
+    }
+
+    nav {
+      display: none;
+      gap: 22px
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--suave)
+    }
+
+    nav a:hover {
+      color: var(--texto)
+    }
+
+    header .btn {
+      padding: 9px 16px
+    }
+
+    @media(min-width:760px) {
+      nav {
+        display: flex
+      }
+    }
+
+    /* portada */
+    .portada {
+      border-top: 0;
+      padding: 84px 0 96px;
+      position: relative;
+      background-color: var(--fondo);
+      background-image:
+        linear-gradient(to right, rgba(20, 11, 8, .96) 0%, rgba(20, 11, 8, .82) 55%, rgba(20, 11, 8, .55) 100%),
+        linear-gradient(to top, rgba(20, 11, 8, 1) 0%, transparent 28%),
+        radial-gradient(ellipse 70% 60% at 85% 0%, rgba(234, 91, 12, .45), transparent 70%),
+        radial-gradient(ellipse 60% 50% at 0% 100%, rgba(214, 40, 36, .35), transparent 70%),
+        url("images/hero.jpg");
+      background-position: center right;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    @media(max-width:768px) {
+      .portada {
+        background-image:
+          linear-gradient(to bottom, rgba(20, 11, 8, .88) 0%, rgba(20, 11, 8, .94) 100%),
+          url("images/hero.jpg");
+        background-position: center;
+      }
+    }
+
+    .portada h1 {
+      font-size: clamp(3rem, 13vw, 7.5rem);
+      text-transform: uppercase;
+      letter-spacing: .01em;
+      max-width: 11ch
+    }
+
+    .portada p {
+      max-width: 46ch;
+      font-size: 1.2rem;
+      color: var(--suave);
+      margin: 20px 0 28px
+    }
+
+    .acciones {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px
+    }
+
+    /* horarios */
+    .dias {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px
+    }
+
+    .dias button {
+      font: 600 1rem var(--cuerpo);
+      color: var(--texto);
+      background: var(--panel);
+      border: 1px solid var(--linea);
+      border-radius: 8px;
+      padding: 10px 16px;
+      cursor: pointer
+    }
+
+    .dias button[aria-selected="true"] {
+      background: var(--oro);
+      color: var(--fondo);
+      border-color: var(--oro)
+    }
+
+    .dias small {
+      display: block;
+      font-size: .72rem;
+      font-weight: 400;
+      line-height: 1
+    }
+
+    .clases {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px
+    }
+
+    .clase {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 14px;
+      align-items: center;
+      background: var(--panel);
+      border-radius: 10px;
+      padding: 14px 16px;
+      border-left: 8px solid var(--suave)
+    }
+
+    .clase .hora {
+      font-family: var(--titulos);
+      font-size: 1.5rem;
+      color: var(--oro);
+      line-height: 1
+    }
+
+    .clase .hora span {
+      display: block;
+      font: 400 .85rem var(--cuerpo);
+      color: var(--suave);
+      margin-top: 4px
+    }
+
+    .clase strong {
+      font-size: 1.15rem
+    }
+
+    .clase em {
+      display: block;
+      font-style: normal;
+      color: var(--suave);
+      font-size: .95rem
+    }
+
+    .clase[data-tipo=kick] {
+      border-color: var(--rojo)
+    }
+
+    .clase[data-tipo=box] {
+      border-color: var(--naranja)
+    }
+
+    .clase[data-tipo=hook] {
+      border-color: var(--oro)
+    }
+
+    .clase[data-tipo=kids] {
+      border-color: var(--turquesa)
+    }
+
+    .clase[data-tipo=k1],
+    .clase[data-tipo=muay] {
+      border-color: var(--hueso)
+    }
+
+    .nota {
+      color: var(--suave);
+      font-size: .95rem;
+      margin-top: 16px
+    }
+
+    .vacio {
+      color: var(--suave);
+      padding: 16px 0
+    }
+
+    /* profes */
+    .profes {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))
+    }
+
+    .profe {
+      background: var(--panel);
+      border: 1px solid var(--linea);
+      border-radius: 12px;
+      padding: 20px
+    }
+
+    .foto {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: var(--rojo);
+      display: grid;
+      place-items: center;
+      font-family: var(--titulos);
+      font-size: 2.2rem;
+      margin-bottom: 14px
+    }
+
+    .profe h3 {
+      font-size: 1.6rem
+    }
+
+    .apodo {
+      color: var(--oro);
+      margin: 2px 0 10px
+    }
+
+    .profe ul {
+      margin: 0 0 12px;
+      padding-left: 18px;
+      color: var(--suave);
+      font-size: .97rem
+    }
+
+    .disc {
+      font-size: .95rem;
+      border-top: 1px solid var(--linea);
+      padding-top: 10px;
+      margin: 0
+    }
+
+    /* instalaciones / galería */
+    .galeria {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    @media (min-width: 768px) {
+      .galeria {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .galeria-destacada {
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+    }
+
+    .galeria-item {
+      position: relative;
+      margin: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--linea);
+      background: var(--panel);
+      aspect-ratio: 4 / 3;
+    }
+
+    .galeria-destacada {
+      aspect-ratio: 16 / 10;
+    }
+
+    .galeria-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .35s ease;
+    }
+
+    .galeria-item:hover img {
+      transform: scale(1.04);
+    }
+
+    .galeria-item figcaption {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 24px 16px 14px;
+      background: linear-gradient(to top, rgba(20, 11, 8, .94) 0%, rgba(20, 11, 8, .6) 70%, transparent 100%);
+      color: var(--texto);
+      pointer-events: none;
+    }
+
+    .galeria-item figcaption strong {
+      display: block;
+      font-size: 1.05rem;
+      color: var(--oro);
+      font-family: var(--titulos);
+      letter-spacing: .02em;
+    }
+
+    .galeria-item figcaption span {
+      display: block;
+      font-size: .85rem;
+      color: var(--suave);
+      margin-top: 2px;
+    }
+
+    /* para quién */
+    .grupos {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr))
+    }
+
+    .grupos div {
+      border-left: 4px solid var(--naranja);
+      padding-left: 14px
+    }
+
+    .grupos h3 {
+      font-size: 1.35rem;
+      margin-bottom: 4px
+    }
+
+    .grupos p {
+      margin: 0;
+      color: var(--suave)
+    }
+
+    /* ubicación */
+    .donde {
+      display: grid;
+      gap: 24px
+    }
+
+    @media(min-width:800px) {
+      .donde {
+        grid-template-columns: 1fr 1.3fr
+      }
+    }
+
+    .donde iframe {
+      width: 100%;
+      height: 340px;
+      border: 0;
+      border-radius: 12px;
+      background: var(--panel)
+    }
+
+    .donde p {
+      margin: 0 0 12px
+    }
+
+    footer {
+      border-top: 1px solid var(--linea);
+      padding: 32px 0 96px;
+      color: var(--suave);
+      font-size: .95rem
+    }
+
+    footer .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 28px;
+      justify-content: space-between
+    }
+
+    .flota {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 6;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, .5)
+    }
+
+    @media(max-width:480px) {
+      .clase {
+        grid-template-columns: 84px 1fr
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="wrap">
+      <a class="marca" href="#inicio">INFERNO COMBAT</a>
+      <nav aria-label="Secciones">
+        <a href="#horarios">Horarios</a>
+        <a href="#instalaciones">Instalaciones</a>
+        <a href="#profesores">Profesores</a>
+        <a href="#grupos">Grupos</a>
+        <a href="#ubicacion">Cómo llegar</a>
+      </nav>
+      <a class="btn btn-wa" data-wa href="#">Escribinos</a>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <section class="portada">
+      <div class="wrap">
+        <h1>Forjá tu carácter</h1>
+        <p>Kickboxing, Boxeo, K1 y Muay Thai en Guaymallén. Clases para niños, jóvenes y adultos, de principiante a
+          competición.</p>
+        <div class="acciones">
+          <a class="btn btn-wa" data-wa data-msg="¡Hola! Quisiera consultar por una clase de prueba." href="#">Consultar
+            por una clase de prueba</a>
+          <a class="btn btn-borde" href="#horarios">Ver horarios</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="horarios">
+      <div class="wrap">
+        <h2>Horarios</h2>
+        <p class="bajada">Elegí un día. Cada clase dura 1 hora.</p>
+        <div class="dias" role="tablist" aria-label="Días de la semana" id="dias"></div>
+        <ul class="clases" id="clases" aria-live="polite"></ul>
+        <p class="nota">Para reservar tu lugar o consultar por otras actividades, escribinos por WhatsApp.</p>
+      </div>
+    </section>
+
+    <section id="instalaciones">
+      <div class="wrap">
+        <h2>Instalaciones</h2>
+        <p class="bajada">Un espacio totalmente equipado para entrenar deportes de combate: tatami de alto impacto, sector de bolsas pesadas, protecciones y preparación física.</p>
+        <div class="galeria">
+          <figure class="galeria-item galeria-destacada">
+            <img src="images/instalaciones/foto6.jpeg" alt="Área de combate y bolsas en pleno entrenamiento en Inferno Combat Gym" loading="lazy">
+            <figcaption>
+              <strong>Área de combate y bolsas</strong>
+              <span>Clases dinámicas con amplio espacio y seguridad</span>
+            </figcaption>
+          </figure>
+          <figure class="galeria-item">
+            <img src="images/instalaciones/foto3.jpeg" alt="Tatami amplio y bolsas pesadas con alumnos de kickboxing y boxeo" loading="lazy">
+            <figcaption>
+              <strong>Tatami de alto impacto</strong>
+              <span>Amortiguación para rounds intensos y sparring</span>
+            </figcaption>
+          </figure>
+          <figure class="galeria-item">
+            <img src="images/instalaciones/foto1.jpeg" alt="Clase de combate infantil en el tatami de Inferno Combat" loading="lazy">
+            <figcaption>
+              <strong>Espacio formativo infantil</strong>
+              <span>Entrenamiento seguro de respeto y disciplina para los más chicos</span>
+            </figcaption>
+          </figure>
+          <figure class="galeria-item">
+            <img src="images/instalaciones/foto5.jpeg" alt="Sector de bolsas y punching con grupo de combate" loading="lazy">
+            <figcaption>
+              <strong>Sector de bolsas y punching</strong>
+              <span>Bolsas pesadas, peras y escudos de golpeo profesional</span>
+            </figcaption>
+          </figure>
+          <figure class="galeria-item">
+            <img src="images/instalaciones/foto4.jpeg" alt="Grupo de jóvenes y adultos en el gimnasio Inferno Combat" loading="lazy">
+            <figcaption>
+              <strong>Comunidad y entrenamiento</strong>
+              <span>Ambiente motivador para todas las edades y niveles</span>
+            </figcaption>
+          </figure>
+          <figure class="galeria-item">
+            <img src="images/instalaciones/foto2.jpeg" alt="Entrenamiento infantil y funcional en tatami" loading="lazy">
+            <figcaption>
+              <strong>Equipamiento completo</strong>
+              <span>Guantes, vendas, tibiales y accesorios de entrenamiento</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="profesores">
+      <div class="wrap">
+        <h2>Profesores</h2>
+        <p class="bajada">Atletas y entrenadores que dan las clases.</p>
+        <div class="profes" id="profes"></div>
+      </div>
+    </section>
+
+    <section id="grupos">
+      <div class="wrap">
+        <h2>Un grupo para cada objetivo</h2>
+        <p class="bajada">No hace falta preparación física previa para empezar.</p>
+        <div class="grupos">
+          <div>
+            <h3>Niños</h3>
+            <p>De 6 a 12 años. Disciplina, respeto y confianza en un ambiente seguro y divertido.</p>
+          </div>
+          <div>
+            <h3>Jóvenes y adultos</h3>
+            <p>Desde los 13 años. Aprendé técnica, ponete en forma y descargá el estrés.</p>
+          </div>
+          <div>
+            <h3>Competición</h3>
+            <p>Team APEX, con evaluación previa, para quienes quieren competir.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ubicacion">
+      <div class="wrap">
+        <h2>Cómo llegar</h2>
+        <div class="donde">
+          <div>
+            <p><strong>Pedro B. Palacios 1358</strong><br>Belgrano, Guaymallén, Mendoza</p>
+            <p>Colectivos: 530, 531, 532, 533, 534, 645, 120, 234 y 235.</p>
+            <p><a class="btn btn-borde" target="_blank" rel="noopener"
+                href="https://www.google.com/maps/dir/?api=1&destination=Inferno+Combat,+Pedro+B.+Palacios+1358,+Guaymall%C3%A9n,+Mendoza">Abrir
+                en Google Maps</a></p>
+          </div>
+          <iframe title="Mapa de Inferno Combat Gym" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13402.088240858697!2d-68.80624265596924!3d-32.88436272953252!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x967e0f003bc1ea81%3A0xdf12e89b318f8c89!2sInferno%20Combat!5e0!3m2!1ses-419!2sar!4v1794405651261!5m2!1ses-419!2sar"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>Inferno Combat Gym · Pedro B. Palacios 1358, Belgrano, Guaymallén</span>
+      <span><a href="https://instagram.com/inferno.combat" target="_blank" rel="noopener">Instagram @inferno.combat</a>
+        · <a data-wa href="#">WhatsApp +54 9 261 707 8248</a></span>
+    </div>
+  </footer>
+
+  <a class="btn btn-wa flota" data-wa href="#" aria-label="Escribinos por WhatsApp">WhatsApp</a>
+
+  <script>
+    /* ===== CONFIGURACIÓN =====
+       Pegá acá los links de Google Sheets publicados como CSV
+       (Archivo > Compartir > Publicar en la web > pestaña > CSV).
+       Si están vacíos, la página usa horarios.csv y profes.csv del repositorio. */
+    const CONFIG = {
+      telefono: '5492617078248',
+      mensaje: '¡Hola! Quisiera consultar por las clases de Inferno Combat.',
+      horariosURL: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSoAWyYrDN7ZTbr_KVn-xP7pxzD90NhHKFYxbBUa32RY2gnxCJa7g6XjFNHC_qlhyM_VqVewIxPiTmG/pub?gid=1745678176&single=true&output=csv',
+      profesURL: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7AReUWDs5xp5zwsVSd18zhgxEXE5lQwB4M55TLEamudoYUod2Udz8LdBhGp9akK9sX2dHv130KxFd/pub?gid=1251663318&single=true&output=csv'
+    };
+
+    const DIAS = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+    const norm = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+
+    function el(tag, props = {}, ...hijos) {
+      const e = document.createElement(tag);
+      for (const k in props) { k === 'class' ? e.className = props[k] : e.setAttribute(k, props[k]); }
+      hijos.forEach(h => e.append(h));
+      return e;
+    }
+
+    function parseCSV(t) {
+      const rows = []; let row = [], f = '', q = false;
+      for (let i = 0; i < t.length; i++) {
+        const c = t[i];
+        if (q) { if (c === '"') { if (t[i + 1] === '"') { f += '"'; i++; } else q = false; } else f += c; }
+        else if (c === '"') q = true;
+        else if (c === ',') { row.push(f); f = ''; }
+        else if (c === '\n' || c === '\r') { if (c === '\r' && t[i + 1] === '\n') i++; row.push(f); f = ''; rows.push(row); row = []; }
+        else f += c;
+      }
+      if (f || row.length) { row.push(f); rows.push(row); }
+      const [h, ...r] = rows.filter(x => x.some(v => v.trim()));
+      const keys = h.map(k => norm(k));
+      return r.map(x => Object.fromEntries(keys.map((k, i) => [k, (x[i] || '').trim()])));
+    }
+
+    async function cargar(url, local) {
+      const r = await fetch(url || local, { cache: 'no-store' });
+      if (!r.ok) throw new Error(r.status);
+      return parseCSV(await r.text());
+    }
+
+    /* WhatsApp */
+    document.querySelectorAll('[data-wa]').forEach(a => {
+      const msg = a.dataset.msg || CONFIG.mensaje;
+      a.href = `https://wa.me/${CONFIG.telefono}?text=${encodeURIComponent(msg)}`;
+      a.target = '_blank'; a.rel = 'noopener';
+    });
+
+    /* Horarios */
+    const tipo = c => {
+      const n = norm(c);
+      if (/nin|kid/.test(n)) return 'kids';
+      if (/kick/.test(n)) return 'kick';
+      if (/box/.test(n)) return 'box';
+      if (/hook/.test(n)) return 'hook';
+      if (/k-?1/.test(n)) return 'k1';
+      if (/muay/.test(n)) return 'muay';
+      return 'otro';
+    };
+    const hora = h => { const [a, b = '00'] = h.split(':'); return a.padStart(2, '0') + ':' + b.padStart(2, '0'); };
+    const mas1 = h => String((parseInt(h, 10) + 1) % 24).padStart(2, '0') + h.slice(2);
+
+    function pintarHorarios(filas) {
+      const porDia = {};
+      DIAS.forEach(d => porDia[norm(d)] = []);
+      filas.forEach(f => { const k = norm(f.dia || ''); if (porDia[k] && f.clase) porDia[k].push({ ...f, hora: hora(f.hora) }); });
+      Object.values(porDia).forEach(l => l.sort((a, b) => a.hora.localeCompare(b.hora)));
+
+      const hoy = new Date().getDay();
+      let activo = hoy === 0 ? 0 : hoy - 1;
+      const tabs = document.getElementById('dias'), lista = document.getElementById('clases');
+
+      function mostrar(i) {
+        activo = i;
+        [...tabs.children].forEach((b, j) => b.setAttribute('aria-selected', j === i));
+        lista.replaceChildren();
+        const clases = porDia[norm(DIAS[i])];
+        if (!clases.length) { lista.append(el('li', { class: 'vacio' }, 'Este día no hay clases.')); return; }
+        clases.forEach(c => {
+          const info = el('div', {}, el('strong', {}, c.clase));
+          if (c.profe) info.append(el('em', {}, 'Profe: ' + c.profe));
+          lista.append(el('li', { class: 'clase', 'data-tipo': tipo(c.clase) },
+            el('div', { class: 'hora' }, c.hora, el('span', {}, 'a ' + mas1(c.hora))), info));
+        });
+      }
+
+      DIAS.forEach((d, i) => {
+        const b = el('button', { role: 'tab', type: 'button' }, d);
+        if (i === (hoy === 0 ? 0 : hoy - 1) && hoy !== 0) b.append(el('small', {}, 'hoy'));
+        b.addEventListener('click', () => mostrar(i));
+        tabs.append(b);
+      });
+      mostrar(activo);
+    }
+
+    /* Profesores */
+    function pintarProfes(filas) {
+      const cont = document.getElementById('profes');
+      const fotosPorDefecto = {
+        'esteban diaz': 'images/profes/profeToro.png',
+        'abdon toledo': 'images/profes/profeLudus.png',
+        'victoria perez': 'images/profes/profeVicky.png'
+      };
+
+      filas.filter(p => p.nombre).forEach(p => {
+        const fotoSrc = p.foto
+          ? (p.foto.includes('/') ? p.foto : 'images/profes/' + p.foto)
+          : fotosPorDefecto[norm(p.nombre)];
+
+        const foto = fotoSrc
+          ? el('img', { class: 'foto', src: fotoSrc, alt: 'Foto de ' + p.nombre, loading: 'lazy' })
+          : el('div', { class: 'foto', 'aria-hidden': 'true' }, p.nombre.split(' ').map(x => x[0]).slice(0, 2).join(''));
+        const card = el('article', { class: 'profe' }, foto, el('h3', {}, p.nombre));
+        if (p.apodo) card.append(el('p', { class: 'apodo' }, '“' + p.apodo + '”'));
+        const titulos = (p.titulo || '').split('|').map(t => t.trim()).filter(Boolean);
+        if (titulos.length) { const ul = el('ul'); titulos.forEach(t => ul.append(el('li', {}, t))); card.append(ul); }
+        if (p.disciplinas) card.append(el('p', { class: 'disc' }, p.disciplinas));
+        cont.append(card);
+      });
+    }
+
+    cargar(CONFIG.horariosURL, 'horarios.csv').then(pintarHorarios).catch(() => {
+      document.getElementById('clases').append(el('li', { class: 'vacio' }, 'No pudimos cargar los horarios. Escribinos por WhatsApp y te los pasamos.'));
+    });
+    cargar(CONFIG.profesURL, 'profes.csv').then(pintarProfes).catch(() => {
+      document.getElementById('profes').append(el('p', { class: 'vacio' }, 'No pudimos cargar los profesores.'));
+    });
+  </script>
+</body>
+
+</html>
