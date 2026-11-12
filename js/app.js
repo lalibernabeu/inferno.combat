@@ -124,26 +124,61 @@ function pintarHorarios(filas) {
   mostrar(activo);
 }
 
-/* Profesores - Estilo glorioso */
-function pintarProfes(filas) {
-  const cont = document.getElementById('profes');
-  if (!cont) return;
-  cont.replaceChildren();
-
+/* Procesar fotos (admite archivos locales, URLs directas y enlaces comunes de Google Drive) */
+function procesarFoto(url, nombre) {
   const fotosPorDefecto = {
     'esteban diaz': 'images/profes/profeToro.png',
     'abdon toledo': 'images/profes/profeLudus.png',
     'victoria perez': 'images/profes/profeVicky.png'
   };
 
-  filas.filter(p => p.nombre).forEach(p => {
-    const fotoSrc = p.foto
-      ? (p.foto.includes('/') ? p.foto : 'images/profes/' + p.foto)
-      : fotosPorDefecto[norm(p.nombre)];
+  if (!url) {
+    return fotosPorDefecto[norm(nombre)] || null;
+  }
 
-    const foto = fotoSrc
-      ? el('img', { class: 'foto', src: fotoSrc, alt: 'Foto de ' + p.nombre, loading: 'lazy' })
-      : el('div', { class: 'foto', 'aria-hidden': 'true' }, p.nombre.split(' ').map(x => x[0]).slice(0, 2).join(''));
+  url = url.trim();
+
+  // Si pegan cualquier link de Google Drive, extraemos el ID automáticamente
+  const matchDrive = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+  if (matchDrive && matchDrive[1]) {
+    return `https://lh3.googleusercontent.com/d/${matchDrive[1]}`;
+  }
+
+  // Si ya es una URL externa completa
+  if (url.startsWith('http://') || url.startsWith('https://')) {
+    return url;
+  }
+
+  // Si es una ruta relativa con carpeta
+  if (url.includes('/')) {
+    return url;
+  }
+
+  // Si es solo el nombre de archivo (ej: 'profeToro.png')
+  return 'images/profes/' + url;
+}
+
+/* Profesores - Estilo glorioso */
+function pintarProfes(filas) {
+  const cont = document.getElementById('profes');
+  if (!cont) return;
+  cont.replaceChildren();
+
+  filas.filter(p => p.nombre).forEach(p => {
+    const fotoSrc = procesarFoto(p.foto, p.nombre);
+
+    let foto;
+    if (fotoSrc) {
+      foto = el('img', { class: 'foto', src: fotoSrc, alt: 'Foto de ' + p.nombre, loading: 'lazy' });
+      // Si por alguna razón la imagen externa falla o se borra, mostramos las iniciales con estilo
+      foto.addEventListener('error', () => {
+        const iniciales = p.nombre.split(' ').map(x => x[0]).slice(0, 2).join('');
+        const fallback = el('div', { class: 'foto', 'aria-hidden': 'true' }, iniciales);
+        foto.replaceWith(fallback);
+      });
+    } else {
+      foto = el('div', { class: 'foto', 'aria-hidden': 'true' }, p.nombre.split(' ').map(x => x[0]).slice(0, 2).join(''));
+    }
 
     const card = el('article', { class: 'profe' });
 
